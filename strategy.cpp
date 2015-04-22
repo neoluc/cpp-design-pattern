@@ -24,10 +24,7 @@ public:
 class NormalDuck : public Duck {
 public:
 	NormalDuck() {
-		fly_behaviour = new FlyWithWings();
-	}
-	~NormalDuck() {
-		delete fly_behaviour;
+		fly_behaviour = &FlyWithWings();
 	}
 	virtual void display() {
 		cout << "i am a normal duck" << endl;
@@ -35,7 +32,6 @@ public:
 };
 
 int main() {
-	NormalDuck normal_duck;
-	Duck *d = &normal_duck;
+	Duck *d = &NormalDuck();
 	d.perform_fly();
 }
